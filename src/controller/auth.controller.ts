@@ -6,7 +6,6 @@ import bcryptjs, { genSalt } from 'bcryptjs';
 
 
 export const Register=  async (req:Request,res:Response)=>{
-
     const body = req.body;
     const {error}=  RegisterValidation.validate(body);
     if(error){
@@ -28,4 +27,22 @@ export const Register=  async (req:Request,res:Response)=>{
     });
 
     res.send(user);
+}
+
+
+
+export const Login=  async (req:Request,res:Response)=>{
+    const body = req.body;
+    const repository = getManager().getRepository(User);
+    const user = await repository.findOne({email:body.email})
+
+     if(!user){
+         res.status(404).send('Invalid credential!!');
+     } 
+     if(!await bcryptjs.compare(body.password, user.password)){
+        res.status(400).send('Invalid credential!!');
+     }
+
+    const{password,...data}=user;
+    res.send(data);
 }
