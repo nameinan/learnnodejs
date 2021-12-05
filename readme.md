@@ -12,3 +12,6 @@ npm run start/npm start
 4. tsc --init
 
 5. npm install /npm start
+
+6. npm i express cors
+7. npm i -D @types/express @types/cors
