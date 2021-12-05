@@ -5,11 +5,13 @@
     "username": "sa",
     "password": "express",
     "database": "test",
-    "entities": ["./src/entities/*.ts"],
+    "entities": ["./src/entity/*.ts"],
     "logging": false,
+
     "extra": {
       "trustServerCertificate": true
-    }
+    },
+    "synchronize": true
     
     
   }

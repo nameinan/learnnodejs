@@ -27,3 +27,10 @@ npm run start/npm start
  
     for Microsoft SQL Server
     npm install mssql --save
+
+
+
+  10.  npm i bcryptjs
+       npm i -D @types/bcryptjs 
+    
+PS C:\codebox\nodejs\practice\example1>

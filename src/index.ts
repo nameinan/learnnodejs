@@ -25,13 +25,15 @@ createConnection()
         origin:["http://localhost:3000"]
     }));
     
+   
     
     routes(app);
-    
-    
     app.listen(8000),() => {
         console.log('listening to port 8000');
-    }
+}
+    
+    
+    
 
 }).catch(error => console.log(error));
 
