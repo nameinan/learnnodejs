@@ -42,3 +42,6 @@ npm run start/npm start
 12. npm i cookie-parser
      npm i -D @types/cookie-parser
 
+
+ 13. npm install dotenv    
+     user =  in .env file

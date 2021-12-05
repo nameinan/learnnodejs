@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { Request,Response } from "express"  
 import { Entity, getManager } from "typeorm";
 import { User } from "../entity/user.entity";
@@ -52,7 +53,7 @@ export const Login=  async (req:Request,res:Response)=>{
     }
     
     //awt cookies with jwt payload
-    res.cookie("jwt",sign({ id:user.id, email:user.email},"secret" ),{
+    res.cookie("jwt",sign({ id:user.id, email:user.email},process.env.SECRET_KEY ),{
            httpOnly:true,maxAge:24*60*60*1000 }); 
 
     res.send({
@@ -65,7 +66,7 @@ export const AuthenticatedUser =  async (req:Request,res:Response)=>{
 
     try{
     const jwt = req.cookies['jwt'];
-    const payload:any = verify(jwt,"secret");
+    const payload:any = verify(jwt, process.env.SECRET_KEY);
     if(!payload){
         res.status(401).send({message:'unauthenticated'});
     }
