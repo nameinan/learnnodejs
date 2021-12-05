@@ -10,3 +10,5 @@ npm run start/npm start
 3. npm i -g typescript
 
 4. tsc --init
+
+5. npm install /npm start
