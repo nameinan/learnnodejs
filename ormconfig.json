@@ -1,0 +1,15 @@
+{
+    "type": "mssql",
+    "host": "W4GCKFH2\\SQLEXPRESS",
+    "port":1433,
+    "username": "sa",
+    "password": "express",
+    "database": "test",
+    "entities": ["./src/entities/*.ts"],
+    "logging": false,
+    "extra": {
+      "trustServerCertificate": true
+    }
+    
+    
+  }
