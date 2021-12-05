@@ -4,10 +4,7 @@ import cors from 'cors'
 import { routes } from './routes';
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-
-
-
-
+import cookieParser from 'cookie-parser';
 
 
 
@@ -15,6 +12,7 @@ createConnection()
  .then(() => {
 
    const app = express();
+   app.use(cookieParser());
    app.use(express.json());
 
     app.get('/',(req:Request,res:Response)=>{
