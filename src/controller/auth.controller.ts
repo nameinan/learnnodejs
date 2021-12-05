@@ -3,6 +3,7 @@ import { Entity, getManager } from "typeorm";
 import { User } from "../entity/user.entity";
 import { RegisterValidation } from "../validation/register.validation";
 import bcryptjs, { genSalt } from 'bcryptjs';
+import { sign } from "jsonwebtoken";
 
 
 export const Register=  async (req:Request,res:Response)=>{
@@ -44,5 +45,16 @@ export const Login=  async (req:Request,res:Response)=>{
      }
 
     const{password,...data}=user;
-    res.send(data);
+    
+    const payload= {
+        id:user.id
+    }
+    
+    //awt cookies with jwt payload
+    res.cookie("jwt",sign({ id:user.id, email:user.email},"secret" ),{
+           httpOnly:true,maxAge:24*60*60*1000 }); 
+
+    res.send({
+        message:"succeed"
+    });
 }

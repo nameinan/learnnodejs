@@ -22,15 +22,15 @@ createConnection()
     });
     
     app.use(cors({
-        origin:["http://localhost:3000"]
+         credentials:true,
+         origin:["http://localhost:3000"]
     }));
     
-   
-    
     routes(app);
+
     app.listen(8000),() => {
-        console.log('listening to port 8000');
-}
+      console.log('listening to port 8000');
+    }
     
     
     

@@ -32,5 +32,11 @@ npm run start/npm start
 
   10.  npm i bcryptjs
        npm i -D @types/bcryptjs 
+
+
+  11. npm install jsonwebtoken
+      npm install -D @types/jsonwebtoken
+      https://jwt.io/
     
-PS C:\codebox\nodejs\practice\example1>
+
+
