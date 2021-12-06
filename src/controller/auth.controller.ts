@@ -74,3 +74,29 @@ export const Logout =  async (req:Request,res:Response)=>{
     });
  
 }
+
+
+export const UpdateInfo =  async (req:Request,res:Response)=>{
+
+   const user:any= req["user"];
+   const repository = getManager().getRepository(User);
+   await repository.update(user.id,req.body);
+   const { password, ...data}= await repository.findOne(user.id);
+   res.send(data);
+}
+
+
+export const UpdatePassword =  async (req:Request,res:Response)=>{
+
+    const user:any= req["user"];
+    if (req.body.password!= req.body.password_confirm){
+        return res.status(400).send({
+            message:"Password and confirm password are not same"
+        })
+    }
+
+   const repository = getManager().getRepository(User);
+   await repository.update(user.id, { password:await bcryptjs.hash(req.body.password,10)});
+   res.send(user);
+ 
+}
