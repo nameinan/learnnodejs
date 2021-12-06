@@ -63,20 +63,7 @@ export const Login=  async (req:Request,res:Response)=>{
 
 
 export const AuthenticatedUser =  async (req:Request,res:Response)=>{
-
-    try{
-    const jwt = req.cookies['jwt'];
-    const payload:any = verify(jwt, process.env.SECRET_KEY);
-    if(!payload){
-        res.status(401).send({message:'unauthenticated'});
-    }
-    const repository = getManager().getRepository(User);
-    const{password,...user} = await repository.findOne({id:payload.id});
-    res.send(user);}
-    catch(e){
-        res.status(401).send({message:'unauthenticated'});
-    }
- 
+    res.send(req["user"]);
 }
 
 export const Logout =  async (req:Request,res:Response)=>{
