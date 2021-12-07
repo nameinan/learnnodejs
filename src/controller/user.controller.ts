@@ -6,15 +6,27 @@ import bcryptjs from 'bcryptjs';
 
 export const Users = async (req:Request,res:Response) => {
  
-    const repository = getManager().getRepository(User);
+    const take=15;
+    const page= parseInt(req.query.page as string||'1');
 
-    const users = repository.find({
+    const repository = getManager().getRepository(User);
+    const [data,total] = await repository.findAndCount({
+        take,
+        skip:(page-1)*take,
         relations:['role']
+   });
+    
+    res.send({
+         data: data.map(u => {
+                  const { password,...data}=u;
+                  return data;
+        }),
+        meta:{
+            total,
+            page,
+            last_page: Math.ceil(total/take)
+        }
     });
-    res.send( (await users).map(u => {
-         const { password,...data}=u;
-         return data;
-    }));
     
 }
 

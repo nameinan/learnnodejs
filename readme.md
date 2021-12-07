@@ -77,3 +77,10 @@ SET FOREIGN_KEY_CHECKS=0;
 SET FOREIGN_KEY_CHECKS=1;
 
 
+
+15. seeding for the products 
+   npm run products:seed
+
+   install faker
+   npm install faker
+   npm install -D @types/faker
