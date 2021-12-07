@@ -44,4 +44,36 @@ npm run start/npm start
 
 
  13. npm install dotenv    
-     user =  in .env file
+     key = value .env file
+
+
+14 seeding
+   npm run roles:seed
+   
+   
+--mssql
+select * from permission
+DELETE FROM permission
+DBCC CHECKIDENT ('test.dbo.permission', RESEED, 0)
+
+
+select * from role
+DELETE from role
+DBCC CHECKIDENT ('test.dbo.role', RESEED, 0)
+
+select  * from role_permissions
+DELETE from role_permissions
+DBCC CHECKIDENT ('test.dbo.role_permissions', RESEED, 0)
+
+select * from [user]
+update [user]
+set role_id=null
+
+
+select  * from role_permissions
+
+--mysql
+SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=1;
+
+
