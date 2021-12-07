@@ -23,7 +23,7 @@ export const Upload = async (req:Request,res:Response) => {
         }
 
         res.send({
-            url:`http://localhostL:8000/api/uploads/${req.file.filename}`
+            url:`http://localhost:8000/api/uploads/${req.file.filename}`
         });   
    });
  

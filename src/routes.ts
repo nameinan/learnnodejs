@@ -1,4 +1,4 @@
-import { Router } from "express";
+import express, { Router } from "express";
 import { AuthenticatedUser, Login, Logout, Register, UpdateInfo, UpdatePassword } from "./controller/auth.controller";
 import { Upload } from "./controller/image.controller";
 import { News } from "./controller/news.controller";
@@ -41,6 +41,9 @@ export const routes =(router:Router)=>{
     router.delete('/api/products/:id', AuthMiddleware,DeleteProduct);
 
     router.post('/api/upload', AuthMiddleware,Upload);
+    
+    router.use('/api/uploads', express.static('./uploads'));
+    //router.use('/api/uploads', express.static( __dirname +'/uploads'));
     
     router.get('/api/news',News);
 }
