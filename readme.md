@@ -84,3 +84,9 @@ SET FOREIGN_KEY_CHECKS=1;
    install faker
    npm install faker
    npm install -D @types/faker
+
+16 image upload
+   npm install multer
+   npm install -D @types/multer
+
+   

@@ -41,10 +41,8 @@ export const routes =(router:Router)=>{
     router.delete('/api/products/:id', AuthMiddleware,DeleteProduct);
 
     router.post('/api/upload', AuthMiddleware,Upload);
-    
     router.use('/api/uploads', express.static('./uploads'));
-    //router.use('/api/uploads', express.static( __dirname +'/uploads'));
-    
+      
     router.get('/api/news',News);
 }
 
