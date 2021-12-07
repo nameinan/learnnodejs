@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AuthenticatedUser, Login, Logout, Register, UpdateInfo, UpdatePassword } from "./controller/auth.controller";
+import { Upload } from "./controller/image.controller";
 import { News } from "./controller/news.controller";
 import { Permissions } from "./controller/permission.controller";
 import { CreateProduct, DeleteProduct, GetProduct, Products, UpdateProduct } from "./controller/product.controller";
@@ -39,8 +40,8 @@ export const routes =(router:Router)=>{
     router.put('/api/products/:id', AuthMiddleware, UpdateProduct) ;
     router.delete('/api/products/:id', AuthMiddleware,DeleteProduct);
 
+    router.post('/api/upload', AuthMiddleware,Upload);
     
-
     router.get('/api/news',News);
 }
 
