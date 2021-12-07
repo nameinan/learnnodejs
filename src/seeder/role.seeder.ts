@@ -24,14 +24,14 @@ createConnections().then( async connection =>{
      const roleRepository = getManager().getRepository(Role);
      await roleRepository.save({
          name:'Admin',
-         permission:permissions
+         permissions:permissions
      });
 
 
      delete permissions[3];
      await roleRepository.save({
         name:'Editor',
-        permission:permissions
+        permissions:permissions
     });
 
 
@@ -41,7 +41,7 @@ createConnections().then( async connection =>{
 
     await roleRepository.save({
        name:'Viewer',
-       permission:permissions
+       permissions:permissions
    })
 
 
