@@ -67,7 +67,7 @@ DBCC CHECKIDENT ('test.dbo.role_permissions', RESEED, 0)
 
 select * from [user]
 update [user]
-set role_id=null
+set role_id=null 
 
 
 select  * from role_permissions
@@ -89,4 +89,8 @@ SET FOREIGN_KEY_CHECKS=1;
    npm install multer
    npm install -D @types/multer
 
-   
+
+
+
+17. Export to csv file
+    npm install json2csv

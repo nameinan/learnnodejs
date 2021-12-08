@@ -2,7 +2,7 @@ import express, { Router } from "express";
 import { AuthenticatedUser, Login, Logout, Register, UpdateInfo, UpdatePassword } from "./controller/auth.controller";
 import { Upload } from "./controller/image.controller";
 import { News } from "./controller/news.controller";
-import { Orders } from "./controller/order.controller";
+import { Export, Orders } from "./controller/order.controller";
 import { Permissions } from "./controller/permission.controller";
 import { CreateProduct, DeleteProduct, GetProduct, Products, UpdateProduct } from "./controller/product.controller";
 import { CreateRole, DeleteRole, GetRole, Roles, UpdateRole } from "./controller/role.controller";
@@ -45,6 +45,7 @@ export const routes =(router:Router)=>{
     router.use('/api/uploads', express.static('./uploads'));
 
     router.get('/api/orders', AuthMiddleware,Orders);
+    router.post('/api/export', AuthMiddleware,Export);
       
     router.get('/api/news',News);
 }
