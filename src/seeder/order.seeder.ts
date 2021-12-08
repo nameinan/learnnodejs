@@ -15,7 +15,8 @@ createConnections().then( async connection =>{
        const order= await orderRepository.save({
            first_name: faker.name.findName(),
            last_name: faker.name.findName(),
-           email: faker.internet.email()
+           email: faker.internet.email(),
+           created_at: faker.date.past(2).toDateString()
         });
 
         
